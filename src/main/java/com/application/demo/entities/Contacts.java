@@ -1,13 +1,9 @@
 package com.application.demo.entities;
 
-import lombok.Data;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
-
 import javax.persistence.*;
 
 @Entity
 @Table(name = "contacts")
-@EntityListeners(AuditingEntityListener.class)
 public class Contacts {
 
     @Id
