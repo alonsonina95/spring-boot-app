@@ -1,38 +1,46 @@
 package com.application.demo.entities;
 
+import lombok.Data;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
 import javax.persistence.*;
 
 @Entity
+@Table(name = "contacts")
+@EntityListeners(AuditingEntityListener.class)
 public class Contacts {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-    private String first_name;
-    private String last_name;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
 
-    public Contacts() {}
+    @Column(name="first_name", nullable = false)
+    private String firstName;
 
-    public Integer getId() {
-        return id;
-    }
+    @Column(name = "last_name", nullable = false)
+    private String lastName;
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public String getFirst_name() {
-        return first_name;
+    public int getId() {
+        return this.id;
     }
 
-    public void setFirst_name(String first_name) {
-        this.first_name = first_name;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
-    public void setLast_name(String last_name) {
-        this.last_name = last_name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public String getLast_name() {
-        return last_name;
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
     }
 }
