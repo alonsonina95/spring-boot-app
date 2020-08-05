@@ -4,6 +4,7 @@ import com.application.demo.entities.Contacts;
 import com.application.demo.exceptions.ContactNotFoundExpception;
 import com.application.demo.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,7 +15,7 @@ import java.util.Map;
 @RestController
 // indicates that the data returned by each method will be writeen straight into the response body
 // instead of rendering template
-@RequestMapping("/api/v1")
+@RequestMapping("/api")
 public class ContactController {
 
     @Autowired
@@ -25,7 +26,7 @@ public class ContactController {
     }
 
     @GetMapping("/contacts")
-    public List<Contacts> all() {
+    public List<Contacts> getAllContacts() {
         return userRepository.findAll();
     }
 
@@ -36,8 +37,8 @@ public class ContactController {
     }
 
     @PostMapping("/contacts")
-    public Contacts createContact(@RequestBody Contacts newContact) {
-        return userRepository.save(newContact);
+    public Contacts createContact(HttpEntity<Contacts> newContact) {
+        return userRepository.save(newContact.getBody());
     }
 
     @PutMapping("/contacts/{id}")

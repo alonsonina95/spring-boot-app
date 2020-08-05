@@ -7,14 +7,12 @@ import javax.persistence.*;
 public class Contacts {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
 
-    @Column(name="first_name", nullable = false)
-    private String firstName;
+    private String firstname;
 
-    @Column(name = "last_name", nullable = false)
-    private String lastName;
+    private String lastname;
 
     public void setId(int id) {
         this.id = id;
@@ -25,18 +23,18 @@ public class Contacts {
     }
 
     public void setLastName(String lastName) {
-        this.lastName = lastName;
+        this.lastname = lastName;
     }
 
     public void setFirstName(String firstName) {
-        this.firstName = firstName;
+        this.firstname = firstName;
     }
 
     public String getFirstName() {
-        return firstName;
+        return firstname;
     }
 
     public String getLastName() {
-        return lastName;
+        return lastname;
     }
 }
